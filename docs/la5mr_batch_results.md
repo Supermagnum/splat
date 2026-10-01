@@ -42,7 +42,7 @@ Simulcast TX sites share callsign `LA5MR`, so batch keys are uniquified
 | Output directory | `/tmp/splat-batch-la5mr` |
 | Jobs | **11 run**, **0 failed**, **0 skipped** |
 | Elapsed | ~1645 s (~27 min) |
-| Terrain | Mapterhorn path |
+| Terrain | Mapterhorn (`planet.pmtiles`) |
 | ITM | error **3** on all 11 (kept; does not fail the job) |
 | County outputs | `Innlandet.{geojson,fgb}`, `Buskerud.*`, `Unknown.*` (LA6JRR) |
 

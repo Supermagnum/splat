@@ -34,14 +34,17 @@ How to run the automated unit suite and sanitizers is described in
 - SD vs HD hear area on four hilly sites: about **+0.1% to +3.9%** (SD larger)
 - ITM coverage error reporting: paths under 2 km ignored; error **3** counted
   in the run report; errors **>= 4** fail the job
-- **Full national 236-job production run was not completed** (stopped). Scope
-  of the production attempt was the LA5MR network only.
-- Limited LA5MR run (11 jobs, relation/18780801, joz positions): see
-  [la5mr_batch_results.md](la5mr_batch_results.md)
+- **Full Norway / national 236-job production run was not completed**
+- Limited LA5MR network batch (OSM relation/18780801, 11 jobs, joz positions):
+  **11 run**, **0 failed**, **0 skipped**; elapsed **~1645 s**; ITM error **3**
+  on all 11 (kept; does not fail the job); county outputs Innlandet, Buskerud,
+  Unknown (LA6JRR). Full job list and notes:
+  [la5mr_batch_results.md](la5mr_batch_results.md). Overview also linked from
+  the top-level [README.md](../README.md).
 
 ## Not verified / not claimed
 
-- A completed end-to-end national batch of all 236 jobs
+- A completed end-to-end national / Norway-wide batch of all 236 jobs
 - Long-duration production stability metrics beyond the checks above
 
 Attribution for Mapterhorn terrain data:
