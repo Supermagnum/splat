@@ -13,6 +13,7 @@ A Terrestrial RF Path and Terrain Analysis Tool for Unix/Linux
 - [splat-batch](#splat-batch)
 - [Testing / test results](#testing-and-code-quality)
 - [LA5MR batch results](docs/la5mr_batch_results.md)
+- [test-results/](test-results/) (checked-in LA5MR batch outputs)
 - [Changes](#changes)
 - [To Do](#to-do)
 - [Note about lrp files](#note-about-lrp-files)
@@ -355,6 +356,8 @@ notes) are in **[docs/test_results.md](docs/test_results.md)**.
 
 A limited LA5MR-network-only splat-batch run (11 jobs; full Norway not run) is
 documented in **[docs/la5mr_batch_results.md](docs/la5mr_batch_results.md)**.
+County GeoJSON/FlatGeobuf, Google Earth KML/KMZ, coverage-map and gnuplot
+path-profile samples from that run are in **[test-results/](test-results/)**.
 
 ### Running Tests
 

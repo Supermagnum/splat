@@ -53,7 +53,8 @@ For packages, compile, and install instructions, start with the top-level
 
 - **[la5mr_batch_results.md](la5mr_batch_results.md)** - Limited LA5MR batch
   - OSM relation/18780801 (11 members), joz positions, Bagn excluded
-  - 11 run / 0 failed; ITM error 3 kept; outputs under `/tmp` (ephemeral)
+  - 11 run / 0 failed; ITM error 3 kept
+  - Checked-in county/KML/plot samples: [test-results/](../test-results/)
 
 ### Manual Pages
 

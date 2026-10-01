@@ -39,7 +39,8 @@ How to run the automated unit suite and sanitizers is described in
   **11 run**, **0 failed**, **0 skipped**; elapsed **~1645 s**; ITM error **3**
   on all 11 (kept; does not fail the job); county outputs Innlandet, Buskerud,
   Unknown (LA6JRR). Full job list and notes:
-  [la5mr_batch_results.md](la5mr_batch_results.md). Overview also linked from
+  [la5mr_batch_results.md](la5mr_batch_results.md). Graphical and county
+  output files: [`test-results/`](../test-results/). Overview also linked from
   the top-level [README.md](../README.md).
 
 ## Not verified / not claimed

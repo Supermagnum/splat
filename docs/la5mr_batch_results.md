@@ -39,15 +39,19 @@ Simulcast TX sites share callsign `LA5MR`, so batch keys are uniquified
 
 | Metric | Value |
 |--------|-------|
-| Output directory | `/tmp/splat-batch-la5mr` |
+| Output directory (ephemeral) | `/tmp/splat-batch-la5mr` |
+| Checked-in copies | [`test-results/`](../test-results/) |
 | Jobs | **11 run**, **0 failed**, **0 skipped** |
 | Elapsed | ~1645 s (~27 min) |
 | Terrain | Mapterhorn (`planet.pmtiles`) |
 | ITM | error **3** on all 11 (kept; does not fail the job) |
 | County outputs | `Innlandet.{geojson,fgb}`, `Buskerud.*`, `Unknown.*` (LA6JRR) |
 
-Output under `/tmp` is **ephemeral** and is not checked into this repository.
-Feature GeoJSON (hear/talk) was written under `features/` in that directory.
+County GeoJSON/FlatGeobuf (Innlandet compressed with bzip2), Google Earth
+KML/KMZ, a coverage-map sample, and gnuplot path-profile samples are in
+[`test-results/`](../test-results/) (see that folder's README). The original
+batch tree under `/tmp` is ephemeral. Feature GeoJSON (hear/talk) was written
+under `features/` in that directory; one small sample is checked in.
 
 ## Not claimed
 
