@@ -36,6 +36,8 @@ How to run the automated unit suite and sanitizers is described in
   in the run report; errors **>= 4** fail the job
 - **Full national 236-job production run was not completed** (stopped). Scope
   of the production attempt was the LA5MR network only.
+- Limited LA5MR run (11 jobs, relation/18780801, joz positions): see
+  [la5mr_batch_results.md](la5mr_batch_results.md)
 
 ## Not verified / not claimed
 

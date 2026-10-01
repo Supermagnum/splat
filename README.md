@@ -12,6 +12,7 @@ A Terrestrial RF Path and Terrain Analysis Tool for Unix/Linux
 - [Mapterhorn](#mapterhorn-terrain-optional)
 - [splat-batch](#splat-batch)
 - [Testing / test results](#testing-and-code-quality)
+- [LA5MR batch results](docs/la5mr_batch_results.md)
 - [Changes](#changes)
 - [To Do](#to-do)
 - [Note about lrp files](#note-about-lrp-files)
@@ -351,6 +352,9 @@ SPLAT! includes comprehensive testing and code quality tools.
 Verified acceptance results for Mapterhorn and splat-batch (unit-test counts, terrain
 checks, path-loss comparison, batch dry-run, despike, ITM error handling, and related
 notes) are in **[docs/test_results.md](docs/test_results.md)**.
+
+A limited LA5MR-network-only splat-batch run (11 jobs; full Norway not run) is
+documented in **[docs/la5mr_batch_results.md](docs/la5mr_batch_results.md)**.
 
 ### Running Tests
 
