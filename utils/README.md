@@ -3,6 +3,11 @@
 Utilities for use with SPLAT! software are found under the
 `utils` directory.  They include the following:
 
+For required packages, CMake compile steps, and install targets (`splat`,
+`mapterhorn2sdf` when libcurl/libwebp are present, `splat-batch`), see the
+top-level [README.md](../README.md). Verified Mapterhorn / batch acceptance
+results are in [docs/test_results.md](../docs/test_results.md).
+
 
 ## srtm2sdf
 The `srtm2sdf` utility generates SPLAT Data Files (SDFs) from STS-99
