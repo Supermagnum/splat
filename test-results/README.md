@@ -18,31 +18,39 @@ Polygons use simple-style GeoJSON properties (`stroke`, `fill`,
 `fill-opacity`, `name`/`title`) and matching KML `PolyStyle`/`LineStyle`
 colors (AABBGGRR). Hear polygons use fill-opacity 0.40; talk use 0.22.
 
+Each file also includes **transmitter site Point features / Placemarks**
+(joz lon/lat) with `properties.name` / KML `<name>` so Marble can label
+sites. Coverage polygons use the same display names plus `(hear)` /
+`(talk)`. KML groups polygons under a `Coverage` folder and sites under
+`Transmitter sites`.
+
 ```bash
 bzip2 -dk LA5MR.geojson.bz2   # ~195 MiB uncompressed
 bzip2 -dk LA5MR.kml.bz2       # ~259 MiB uncompressed
 ```
 
-## Color legend (callsign)
+## Color legend (display name)
 
-Same palette across GeoJSON, KML, and KMZ.
+Same palette across GeoJSON, KML, and KMZ. Job keys remain in the
+`callsign` property for coloring; Marble labels use the display name.
 
-| Callsign | Color | Hex |
-|----------|-------|-----|
-| LA5TRR | red | `#e41a1c` |
-| LA5MR_HOYKORSET | blue | `#377eb8` |
-| LA5MR_BISLINGEN | green | `#4daf4a` |
-| LA5MR_1473491257 | purple | `#984ea3` |
-| LA5MR_5576503609 | orange | `#ff7f00` |
-| LA5MR_12635462528 | brown | `#a65628` |
-| LA2TRR | pink | `#f781bf` |
-| LA9AR | teal | `#66c2a5` |
-| LA2KRR | coral | `#fc8d62` |
-| LA6JRR | periwinkle | `#8da0cb` |
-| LA6NR | gold | `#e6ab02` |
+| Display name | Job key | Color | Hex |
+|--------------|---------|-------|-----|
+| LA5TRR (Trysilfjellet) | LA5TRR | red | `#e41a1c` |
+| LA5MR (Høykorset) | LA5MR_HOYKORSET | blue | `#377eb8` |
+| LA5MR (Bislingen) | LA5MR_BISLINGEN | green | `#4daf4a` |
+| LA5MR (1473491257) | LA5MR_1473491257 | purple | `#984ea3` |
+| LA5MR (5576503609) | LA5MR_5576503609 | orange | `#ff7f00` |
+| LA5MR (12635462528) | LA5MR_12635462528 | brown | `#a65628` |
+| LA2TRR (Kråkhugukampen) | LA2TRR | pink | `#f781bf` |
+| LA9AR (Tronfjell) | LA9AR | teal | `#66c2a5` |
+| LA2KRR (Rafjell) | LA2KRR | coral | `#fc8d62` |
+| LA6JRR | LA6JRR | periwinkle | `#8da0cb` |
+| LA6NR (Syningen) | LA6NR | gold | `#e6ab02` |
 
-Each feature also carries `callsign`, `job_id`, `level` (hear/talk),
-`coverage_type`, `frequency`, `band`, and `county`.
+Coverage features also carry `callsign`, `site_name`, `job_id`,
+`level` (hear/talk), `coverage_type`, `frequency`, `band`, and `county`.
+Site Points use `feature_role=transmitter` plus matching `marker-color`.
 
 ## Present
 
@@ -50,8 +58,8 @@ Each feature also carries `callsign`, `job_id`, `level` (hear/talk),
 
 | File | Notes |
 |------|--------|
-| `LA5MR.geojson.bz2` | All 22 hear/talk features; ~195 MiB uncompressed (bz2 for GitHub) |
-| `LA5MR.kml.bz2` | Same polygons with KML styles; ~259 MiB uncompressed |
+| `LA5MR.geojson.bz2` | 22 hear/talk polygons + 11 transmitter Points; ~195 MiB uncompressed (bz2 for GitHub) |
+| `LA5MR.kml.bz2` | Same with KML styles + site Placemarks; ~259 MiB uncompressed |
 | `LA5MR.kmz` | Zipped KML (~32 MiB); convenient for Marble / Google Earth |
 
 ### County polygons (from `/tmp/splat-batch-la5mr`, colorized)
