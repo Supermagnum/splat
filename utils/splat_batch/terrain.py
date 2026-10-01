@@ -95,6 +95,7 @@ def prefetch_commands(jobs, config, workers):
         cmd += ["--source", str(mt["source"]),
                 "--outdir", str(mt["cache"]),
                 "--workers", str(workers),
+                "--bz2",
                 "--bbox", bbox]
         commands.append(cmd)
     return commands

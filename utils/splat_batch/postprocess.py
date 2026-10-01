@@ -320,6 +320,9 @@ def postprocess_job(job, config):
                 "county": job.county,
                 "level": level,
                 "params_version": str(config["params_version"]),
+                "terrain": "Mapterhorn",
+                "attribution":
+                    "https://mapterhorn.com/attribution",
             },
             "geometry": mapping(geometry),
         })

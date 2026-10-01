@@ -54,6 +54,12 @@ class RunReport:
 
     def as_dict(self):
         return {
+            "attribution": {
+                "terrain": "Mapterhorn",
+                "url": "https://mapterhorn.com/attribution",
+                "note": "Required whenever these coverage polygons are "
+                        "redistributed or shown in an application.",
+            },
             "jobs_run": len(self.run),
             "jobs_cached": len(self.cached),
             "jobs_failed": len(self.failed),
@@ -75,9 +81,23 @@ class RunReport:
         with open(path, "w", encoding="utf-8") as handle:
             json.dump(self.as_dict(), handle, indent=1)
 
+    def write_attribution(self, path):
+        """Write a standalone attribution file next to the county outputs."""
+        text = (
+            "Terrain data: Mapterhorn\n"
+            "Attribution (required): https://mapterhorn.com/attribution\n"
+            "\n"
+            "Include this credit wherever these coverage polygons are\n"
+            "redistributed, packaged, or shown in an application.\n"
+        )
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write(text)
+
     def format_text(self):
         lines = [
             "splat-batch run report",
+            "  attribution         : Mapterhorn "
+            "(https://mapterhorn.com/attribution)",
             "  jobs run (new)      : %d" % len(self.run),
             "  jobs cached         : %d" % len(self.cached),
             "  jobs failed         : %d" % len(self.failed),

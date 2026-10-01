@@ -263,6 +263,7 @@ def main(argv=None):
 
     report.elapsed_s = time.time() - started
     report.write_json(os.path.join(out_dir, "report.json"))
+    report.write_attribution(os.path.join(out_dir, "ATTRIBUTION.txt"))
     print(report.format_text())
     return 1 if report.failed else 0
 
