@@ -11,18 +11,59 @@ Terrain: Mapterhorn. Attribution (required):
 https://mapterhorn.com/attribution
 (see also `ATTRIBUTION.txt`).
 
+## Viewing in KDE Marble
+
+Prefer `LA5MR.kmz` (or decompress `LA5MR.kml.bz2` / `LA5MR.geojson.bz2`).
+Polygons use simple-style GeoJSON properties (`stroke`, `fill`,
+`fill-opacity`, `name`/`title`) and matching KML `PolyStyle`/`LineStyle`
+colors (AABBGGRR). Hear polygons use fill-opacity 0.40; talk use 0.22.
+
+```bash
+bzip2 -dk LA5MR.geojson.bz2   # ~195 MiB uncompressed
+bzip2 -dk LA5MR.kml.bz2       # ~259 MiB uncompressed
+```
+
+## Color legend (callsign)
+
+Same palette across GeoJSON, KML, and KMZ.
+
+| Callsign | Color | Hex |
+|----------|-------|-----|
+| LA5TRR | red | `#e41a1c` |
+| LA5MR_HOYKORSET | blue | `#377eb8` |
+| LA5MR_BISLINGEN | green | `#4daf4a` |
+| LA5MR_1473491257 | purple | `#984ea3` |
+| LA5MR_5576503609 | orange | `#ff7f00` |
+| LA5MR_12635462528 | brown | `#a65628` |
+| LA2TRR | pink | `#f781bf` |
+| LA9AR | teal | `#66c2a5` |
+| LA2KRR | coral | `#fc8d62` |
+| LA6JRR | periwinkle | `#8da0cb` |
+| LA6NR | gold | `#e6ab02` |
+
+Each feature also carries `callsign`, `job_id`, `level` (hear/talk),
+`coverage_type`, `frequency`, `band`, and `county`.
+
 ## Present
 
-### County polygons (from `/tmp/splat-batch-la5mr`)
+### Network merge (all 11 jobs)
 
 | File | Notes |
 |------|--------|
-| `Innlandet.geojson.bz2` | Original GeoJSON ~154 MiB; bzip2 to stay under GitHub's 100 MiB limit |
-| `Innlandet.fgb.bz2` | Original FlatGeobuf ~121 MiB; same reason |
-| `Innlandet.kml.bz2` | County polygons converted with `ogr2ogr` for Google Earth |
-| `Buskerud.{geojson,fgb,kml,kmz}` | Uncompressed GeoJSON/FGB/KML plus KMZ |
-| `Unknown.{geojson,fgb,kml,kmz}` | LA6JRR county tag was Unknown |
-| `features/LA5MR_12635462528_145625.geojson` | Smallest per-job hear/talk feature sample |
+| `LA5MR.geojson.bz2` | All 22 hear/talk features; ~195 MiB uncompressed (bz2 for GitHub) |
+| `LA5MR.kml.bz2` | Same polygons with KML styles; ~259 MiB uncompressed |
+| `LA5MR.kmz` | Zipped KML (~32 MiB); convenient for Marble / Google Earth |
+
+### County polygons (from `/tmp/splat-batch-la5mr`, colorized)
+
+| File | Notes |
+|------|--------|
+| `Innlandet.geojson.bz2` | Colorized GeoJSON; original ~161 MiB |
+| `Innlandet.fgb.bz2` | FlatGeobuf (geometry only; colors live in GeoJSON/KML) |
+| `Innlandet.kml.bz2` | Colorized KML for Marble / Google Earth |
+| `Buskerud.{geojson,fgb,kml,kmz}` | LA6NR; colorized GeoJSON/KML/KMZ |
+| `Unknown.{geojson,fgb,kml,kmz}` | LA6JRR; colorized GeoJSON/KML/KMZ |
+| `features/LA5MR_12635462528_145625.geojson` | Per-job hear/talk sample (colorized) |
 | `report.json`, `splat-batch.log`, `ATTRIBUTION.txt` | Batch metadata |
 
 Decompress Innlandet GeoJSON with:
@@ -53,10 +94,12 @@ job table). TX height used the batch default (6 m AGL) for the sample.
 
 - Per-job coverage PNGs / PPMs for all 11 sites (work dirs cleaned; only one
   sample regenerated above)
-- KMZ for Innlandet (raw KML ~189 MiB; stored as `Innlandet.kml.bz2` instead)
+- Uncompressed Innlandet / full LA5MR GeoJSON/KML (stored as `.bz2`; use
+  `LA5MR.kmz` for Marble without decompressing)
 - Signal-strength graphs for every repeater (gnuplot path profiles need
   point-to-point `-t`/`-r`; batch coverage mode does not invoke them)
-- Remaining per-job feature GeoJSON under `features/` (large; one sample kept)
+- Remaining per-job feature GeoJSON under `features/` (large; one sample kept;
+  full merge is `LA5MR.geojson.bz2`)
 
 ## Original ephemeral location
 
