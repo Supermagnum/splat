@@ -43,6 +43,16 @@ How to run the automated unit suite and sanitizers is described in
   output files: [`test-results/`](../test-results/). Overview also linked from
   the top-level [README.md](../README.md).
 
+## Galdhøpiggen inland coverage
+
+Single-site ITWOM path-loss run at Galdhøpiggen (Innlandet; 61.63644 N,
+8.31248 E; 6 m AGL; 145.700 MHz; RX 1.5 m; 100 km; Mapterhorn), using inland
+`.lrp` climate **5** and average ground rather than the maritime climate-7
+default. Simplified hear/talk areas were about **10154 km2** / **6856 km2**.
+Marble-ready outputs: [`test-results/Galdhopiggen.geojson`](../test-results/Galdhopiggen.geojson),
+`.kml`, and `.kmz` (site Point included). Full notes lived under
+`/tmp/splat-galdhopiggen/ANALYSIS.md`.
+
 ## Not verified / not claimed
 
 - A completed end-to-end national / Norway-wide batch of all 236 jobs
