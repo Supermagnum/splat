@@ -102,21 +102,28 @@ apt-get install cmake g++ clang libbz2-dev zlib1g-dev \
   python3 python3-numpy python3-shapely gdal-bin
 ```
 
-### OSX (High Sierra) / Homebrew
+### macOS / Homebrew
+
+Works on both Intel and Apple Silicon (ARM). Install [Homebrew](https://brew.sh/), then:
 
 ```
-brew install cmake jpeg libpng libgdal curl webp gnuplot python numpy
+brew install cmake ninja jpeg libpng libgdal curl webp bzip2 zlib gnuplot python numpy
 ```
 
-Install shapely and ensure GDAL CLI tools are on `PATH` (Homebrew `gdal` provides them).
+Install shapely (`pip3 install shapely` or `brew install shapely`) and ensure GDAL CLI
+tools are on `PATH` (Homebrew `gdal` provides them).
+
+### Windows
+
+See [Building on Windows](#building-on-windows) below and
+[README_VisualStudio.md](README_VisualStudio.md) for Visual Studio details.
 
 ## Building
 
-You must have CMake and either gcc or clang installed, and the compiler must support at
-least C++17.
+You must have CMake and a C++17 compiler (gcc, clang, or MSVC on Windows).
 
-**Note**: The build system automatically prefers Clang if available (for better sanitizer
-support), but will fall back to GCC if Clang is not found. You can override this by setting
+**Note**: On Unix-like systems the build prefers Clang if available (for better sanitizer
+support), but falls back to GCC if Clang is not found. You can override this by setting
 `CC` and `CXX` environment variables:
 
 ```bash
@@ -130,7 +137,7 @@ CC=clang CXX=clang++ cmake -B build
 cmake -B build
 ```
 
-### Compile (CMake)
+### Compile on Linux (CMake)
 
 From the repository root:
 
@@ -165,9 +172,83 @@ cmake ..
 make
 ```
 
-### Microsoft Windows
+### Building on macOS
 
-See [README_VisualStudio.md](README_VisualStudio.md)
+After installing Homebrew packages as indicated above:
+
+```bash
+git clone https://github.com/Supermagnum/splat.git
+cd splat
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+```
+
+On Apple Silicon, if CMake cannot find Homebrew libraries under `/opt/homebrew`, pass the
+prefix explicitly:
+
+```bash
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_PREFIX_PATH="$(brew --prefix)"
+cmake --build build -j
+```
+
+The `splat` binary is then at `build/splat`. Install with:
+
+```bash
+cmake --install build
+```
+
+### Building on Windows
+
+SPLAT! is a console application. Use Visual Studio 2019 or newer (Community Edition is
+fine), or another C++17 toolchain, with [CMake](https://cmake.org/) and
+[vcpkg](https://vcpkg.io/) for dependencies.
+
+**Note:** On Windows, SDF filenames must use `_` instead of `:` (for example
+`44_45_120_121.sdf` instead of `44:45:120:121.sdf`). Unix and macOS accept either form.
+
+#### 1. Install tools
+
+- Visual Studio 2019+ with the "Desktop development with C++" workload, **or**
+  Build Tools for Visual Studio
+- [Git](https://git-scm.com/)
+- CMake (or `choco install cmake ninja`)
+
+#### 2. Install libraries with vcpkg
+
+From a Developer PowerShell or Command Prompt:
+
+```powershell
+git clone https://github.com/Microsoft/vcpkg.git
+.\vcpkg\bootstrap-vcpkg.bat
+.\vcpkg\vcpkg install bzip2:x64-windows zlib:x64-windows libpng:x64-windows `
+  libjpeg-turbo:x64-windows gdal:x64-windows curl:x64-windows libwebp:x64-windows
+```
+
+Adjust the triplet (`x64-windows`, `arm64-windows`, …) to match your platform.
+
+#### 3. Configure and build
+
+```powershell
+git clone https://github.com/Supermagnum/splat.git
+cd splat
+cmake -B build -DCMAKE_TOOLCHAIN_FILE="..\vcpkg\scripts\buildsystems\vcpkg.cmake" `
+  -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release -j
+```
+
+If `vcpkg` lives elsewhere, set `CMAKE_TOOLCHAIN_FILE` to that clone's
+`scripts\buildsystems\vcpkg.cmake`. The executable is typically
+`build\Release\splat.exe` (or `build\splat.exe` with Ninja).
+
+#### 4. Optional: Visual Studio GUI
+
+Open the repository folder in Visual Studio (File -> Open -> Folder), ensure the CMake
+settings use the vcpkg toolchain file, then build from the CMake menu. See
+[README_VisualStudio.md](README_VisualStudio.md) for more detail.
+
+For path-profile graphs, install [gnuplot](https://sourceforge.net/projects/gnuplot/)
+or `choco install gnuplot`.
 
 ## Installation
 
